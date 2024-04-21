@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ana laura advogada</title>
+</head>
+<body>
+    <header>
+        <img src="LogoSample_ByTailorBrands-removebg-preview.png" alt="Logotipo da Minha Empresa">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="(14)910045596">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <h3>PRECISANDO DE ADVOGADO ?</h3>
+    <h1>(14)910045596</h1>
+
+    <?php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
+    $mensagem = $_POST['mensagem'];
+
+    $destinatario = "analaurap881@gmail.com";
+    $assunto = "Novo formulário de contato do seu site";
+
+    $mensagem_email = "Nome: $nome\n";
+    $mensagem_email .= "Email: $email\n";
+    $mensagem_email .= "Telefone: $telefone\n";
+    $mensagem_email .= "Mensagem:\n$mensagem";
+
+    // Enviar o email
+    mail($destinatario, $assunto, $mensagem_email);
+
+    // Redirecionar de volta para a página do formulário após o envio
+    header('Location: obrigado.html');
+    exit;
+}
+?>
+    
+    <div class="container">
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" placeholder="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" placeholder="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" placeholder="telefone" name="telefone">
+            </div>
+            <div class="form-group">
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" placeholder="escreva aqui seu caso" name="mensagem" rows="4" required></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <div class="texto-lateral">
+        <p>Por favor, preencha o formulário acima e entraremos em contato o mais breve possível para discutir sua questão jurídica.</p>
+    </div>
+    
+</body>
+</html>
